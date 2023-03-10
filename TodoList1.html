@@ -33,7 +33,7 @@
           <li>Make Front-End magic</li>
           <li>COFFEE!!11!</li>
       </ul>
-      <input type="text" data-input="work" class="input  input--work" />
+      <input type="text" data-input="work" class="input input--work" />
     </article>
   </div>  <!-- list container -->
     
@@ -57,7 +57,7 @@
           <li class="todo--is-done">Undo Function</li>
           <li class="todo--is-done">Delete Function</li>
         </ul>
-        <input type="text" data-input="private" class="input  input--private" />
+        <input type="text" data-input="private" class="input input--private" />
       </article>
     </div> <!-- list container -->
  </div> <!-- gw -->
@@ -68,6 +68,7 @@
 
 <script>
 var ToDoList = function(name) {
+  console.log("name " + name);
   this.el = list = document.querySelector('[data-list="' + name +'"]');
   this.childs = this.el.querySelectorAll('li');
   this.lastRemoved = [];
@@ -102,10 +103,11 @@ ToDoList.prototype.addByArray = function(array) {
 
 ToDoList.prototype.addByInput = function() {
   this.input.addEventListener('keyup', function(e) {
+    console.log("input "+ e.keyCode);
     e.preventDefault();
-    if(e.keyCode === 13 && input.value.length > 0) {
-      this.addEntry(input.value);
-      input.value = null;
+    if(e.keyCode === 13 && this.input.value.length > 0) {
+      this.addEntry(this.input.value);
+      this.input.value = null;
     }
   }.bind(this));
 }
